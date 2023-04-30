@@ -3,16 +3,13 @@ import java.util.Scanner;
 import java.io.IOException;
 
 public class memory {
-
     public static void main(String[] args) {
         
-        Scanner scanner = new Scanner(System.in);
-
+        
         int N = 4; // length of random string
         int M = 5; // number of seconds to display random string
         int K = 3; // number of attempts
         
-        int correctCount = 0; // number of correct attempts
         Random random = new Random();
         String randomString = generateRandomString(N, random);
         System.out.println("Remember this string for " + M + " seconds: " + randomString);
@@ -20,27 +17,24 @@ public class memory {
         try {
             Thread.sleep(M * 1000);
             clear();
+            System.out.println("Enter the string that was just displayed.");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine().toString();
+        System.out.println("your input was :\n"+input+"\nthe actual value was\n"+randomString);
         
-        for (int i = 0; i < K; i++) {
-            System.out.print("Enter the remembered string: ");
-            String input = scanner.nextLine();
-            
-            if (input.equals(randomString)) {
-                correctCount++;
-                System.out.println("Correct!");
-            } else {
-                System.out.println("Incorrect.");
-            }
-        }
-        
-        System.out.println("You got " + correctCount + " out of " + K + " correct.");
+        if(input.equals(randomString)){
+            System.out.println("correct!");
+        }   
 
+      
         scanner.close();
     }
     
+
+    //generates the number to be memorised.
     private static String generateRandomString(int length, Random random) {
         StringBuilder sb = new StringBuilder();
         String characters = "0123456789";
@@ -49,7 +43,7 @@ public class memory {
         }
         return sb.toString();
     }
-
+    //clears the screen after a set time has elapsed.
     private static void clear() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
