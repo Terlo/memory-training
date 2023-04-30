@@ -1,6 +1,4 @@
-📝 Memory Game
-
-Memory Game is a command line based application that generates a random string and asks the user to recall it. The application keeps track of the number of correct guesses.
+A command line based application that generates a random string and asks the user to recall it. The application keeps track of the number of correct guesses.
 
 ## 🚀 Getting Started
 
