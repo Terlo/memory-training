@@ -5,10 +5,13 @@ import java.io.IOException;
 public class memory {
     public static void main(String[] args) {
         
-        
-        int N = 4; // length of random string
-        int M = 5; // number of seconds to display random string
-        int K = 3; // number of attempts
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("ENTER THE LENGTH OF THE STRING.");
+        int N = scanner.nextInt(); // length of random string
+        System.out.println("ENTER THE LENGTH OF TIME TO DISPLAY THE STRING.");
+        int M = scanner.nextInt(); // number of seconds to display random string
+        System.out.println("ENTER THE NUMBER OF ATTEMPTS TO GUESS THE STRING.");
+        int K = scanner.nextInt(); // number of attempts
         
         Random random = new Random();
         String randomString = generateRandomString(N, random);
@@ -19,11 +22,12 @@ public class memory {
             clear();
             System.out.println("Enter the string that was just displayed.");
         } catch (InterruptedException e) {
+            System.out.println("Something went wrong:(");
             e.printStackTrace();
         }
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine().toString();
-        System.out.println("your input was :\n"+input+"\nthe actual value was\n"+randomString);
+       
+        Scanner scanner1 = new Scanner(System.in);
+        String input = scanner1.nextLine().toString();
         
         if(input.equals(randomString)){
             System.out.println("correct!");
@@ -31,6 +35,7 @@ public class memory {
 
       
         scanner.close();
+        scanner1.close();
     }
     
 
